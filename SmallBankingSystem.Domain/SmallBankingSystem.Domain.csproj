@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="ProjectDesign">
-      <HintPath>..\..\..\ProjectDesign\bin\Debug\ProjectDesign.dll</HintPath>
-    </Reference>
+    <Compile Remove="Value Object\**" />
+    <EmbeddedResource Remove="Value Object\**" />
+    <None Remove="Value Object\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Value Object\" />
+    <Reference Include="ProjectDesign">
+      <HintPath>..\..\ProjectDesign\bin\Debug\ProjectDesign.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

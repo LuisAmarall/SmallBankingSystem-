@@ -7,18 +7,22 @@ public class Customer
 {
     private Customer() { }
 
-    public Customer(Guid customerId, Name name, Email email, DateTime createdAt)
+    public Customer(Guid customerId, DateTime createdAt, Name name, Email email, Password password)
     {
         CustomerId = customerId;
+        CreatedAt = createdAt;
         Name = name;
         Email = email;
-        CreatedAt = createdAt;
+        Password = password;
     }
 
     public Guid CustomerId { get; private set; }
+    public DateTime CreatedAt { get; private set; }
+
     public Name Name { get; private set; }
     public Email Email { get; private set; }
-    public DateTime CreatedAt { get; private set; }
+    public Password Password { get; private set; }
+
 
     public void UpdateName(Name newName)
     {
@@ -38,6 +42,16 @@ public class Customer
             throw new InvalidValueObjectException($"{nameof(newEmail)}: Sorry, but this email is already in use.");
 
         Email = newEmail;
+    }
+
+    public void UpdatePassword(Password newPassword)
+    {
+        if (newPassword is null)
+            throw new RequiredFieldException($"{nameof(newPassword)}: Please note that the password field does not allow null values.");
+        if (Password != null && Password.Equals(newPassword))
+            throw new InvalidValueObjectException($"{nameof(newPassword)}: Sorry, but this password is already in use.");
+
+        Password = newPassword;
     }
 
     //Inject the soft delete and reactive methods using dependency injection.
