@@ -1,7 +1,7 @@
 ﻿using DomainDesign.Exceptions;
 using DomainDesign.ValueObjects;
 
-namespace SmallBanking.Domain.Entities;
+namespace SmallBankingSystem.Domain.Models.Entities;
 
 public class Customer
 {

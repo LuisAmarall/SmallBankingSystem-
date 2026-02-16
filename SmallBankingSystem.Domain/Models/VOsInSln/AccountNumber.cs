@@ -1,7 +1,7 @@
 ﻿using DomainDesign.Exceptions;
 using DomainDesign.Shared;
 
-namespace SmallBankingSystem.Domain.VOsInSln;
+namespace SmallBankingSystem.Domain.Models.VOsInSln;
 
 public sealed class AccountNumber : ValueObject<AccountNumber>
 {
