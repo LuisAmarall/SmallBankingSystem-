@@ -1,7 +1,7 @@
 ﻿using DomainDesign.Exceptions;
 using DomainDesign.Shared;
 
-namespace SmallBankingSystem.Domain.VOsInSln;
+namespace SmallBankingSystem.Domain.Models.VOsInSln;
 
 public sealed class Money : ValueObject<Money>
 {
@@ -32,7 +32,7 @@ public sealed class Money : ValueObject<Money>
     {
         if (other is null)
             throw new RequiredFieldException($"{nameof(other)}: Please note that the money field does not allow null values.");
-        
+
         return new Money(Amount + other.Amount);
     }
 

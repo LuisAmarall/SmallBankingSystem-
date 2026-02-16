@@ -1,6 +1,6 @@
-﻿using SmallBankingSystem.Domain.VOsInSln;
+﻿using SmallBankingSystem.Domain.Models.VOsInSln;
 
-namespace SmallBankingSystem.Domain.Entities;
+namespace SmallBankingSystem.Domain.Models.Entities;
 
 public class Account
 {
@@ -45,7 +45,7 @@ public class Account
         if (amount is null)
             throw new ArgumentNullException(nameof(amount), "Amount cannot be null.");
 
-        this.Withdraw(amount);
+        Withdraw(amount);
         target.Deposit(amount);
     }
 }
