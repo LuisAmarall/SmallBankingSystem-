@@ -14,19 +14,23 @@ public class Transfer
 
     private Transfer() { }
 
-    public Transfer(Guid transferId, Guid accountId, DateTime transactionDate, Money amount, TransferType type, string description)
+    public Transfer(Guid transferId, DateTime transferDate, Guid sourceAccountId, Guid targetAccountId, Money amount, TransferType type, string description)
     {
         TransferId = transferId;
-        AccountId = accountId;
-        TransferDate = transactionDate;
+        TransferDate = transferDate;
+        SourceAccountId = sourceAccountId;
+        TargetAccountId = targetAccountId;
         Amount = amount;
         Type = type;
         Description = description;
     }
 
     public Guid TransferId { get; private set; }
-    public Guid AccountId { get; private set; }
     public DateTime TransferDate { get; private set; }
+
+    public Guid SourceAccountId { get; private set; }
+
+    public Guid TargetAccountId { get; private set; }
 
     public Money Amount { get; private set; }
 

@@ -2,13 +2,13 @@
 using SmallBankingSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SmallBankingSystem.Infrastructure.Configuration;
+namespace SmallBankingSystem.Infrastructure.Persistence.DbContexts.Configuration;
 
 public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
 {
     public void Configure(EntityTypeBuilder<Transfer> builder)
     {
-        builder.ToTable("Transfer");
+        builder.ToTable("Transfers");
         builder.HasKey(b => b.TransferId);
 
         builder.Property(b => b.TransferDate).HasColumnName("TransferDate").HasColumnType("DATETIME").IsRequired();
