@@ -2,13 +2,13 @@
 using SmallBankingSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SmallBankingSystem.Infrastructure.Configuration;
+namespace SmallBankingSystem.Infrastructure.Persistence.DbContexts.Configuration;
 
 public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.ToTable("Customer");
+        builder.ToTable("Customers");
         builder.HasKey(b => b.CustomerId);
 
         builder.Property(b => b.CreatedAt).HasColumnName("CreatedAt").HasColumnType("DATETIME").IsRequired();

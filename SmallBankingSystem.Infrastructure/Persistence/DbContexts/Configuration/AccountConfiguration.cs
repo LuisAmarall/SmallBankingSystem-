@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmallBankingSystem.Domain.Models.Entities;
 
-namespace SmallBankingSystem.Infrastructure.Configuration;
+namespace SmallBankingSystem.Infrastructure.Persistence.DbContexts.Configuration;
 
 public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
-        builder.ToTable("Account");
+        builder.ToTable("Accounts");
         builder.HasKey(b => b.AccountId);
 
         builder.Property(b => b.CustomerId).HasColumnName("CustomerId").HasColumnType("UNIQUEIDENTIFIER").IsRequired();

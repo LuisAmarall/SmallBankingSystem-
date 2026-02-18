@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmallBankingSystem.Application\SmallBankingSystem.Application.csproj" />
     <ProjectReference Include="..\SmallBankingSystem.Domain\SmallBankingSystem.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
