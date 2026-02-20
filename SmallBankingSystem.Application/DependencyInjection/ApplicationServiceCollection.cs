@@ -14,6 +14,7 @@ public static class ApplicationServiceCollection
 
     private static void RegisterServices(IServiceCollection services)
     {
+        services.AddScoped<AccountService>();
         services.AddScoped<TransferService>();
     }
 }

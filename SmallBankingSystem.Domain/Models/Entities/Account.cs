@@ -6,13 +6,21 @@ public class Account
 {
     private Account() { }
 
-    public Account(Guid accountId, Guid customerId, DateTime createdAt, AccountNumber accountNumber, Money balance)
+    public Account(Guid accountId, Guid customerId, DateTime createdAt, AccountNumber accountNumber, Money balance, Money money)
     {
         AccountId = accountId;
         CustomerId = customerId;
-        CreatedAt = createdAt;
+        CreatedAt = createdAt; CreatedAt = createdAt;
         AccountNumber = accountNumber;
         Balance = balance;
+        Money = money; 
+    }
+
+    public Account(Guid customerId, AccountNumber accountNumber, Money money)
+    {
+        CustomerId = customerId;
+        AccountNumber = accountNumber;
+        Money = money;
     }
 
     public Guid AccountId { get; private set; }
@@ -21,6 +29,7 @@ public class Account
 
     public AccountNumber AccountNumber { get; private set; }
     public Money Balance { get; private set; }
+    public Money Money { get; }
 
     public void Deposit(Money amount)
     {
