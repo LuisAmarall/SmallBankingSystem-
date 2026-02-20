@@ -14,15 +14,16 @@ public class Transfer
 
     private Transfer() { }
 
-    public Transfer(Guid transferId, DateTime transferDate, Guid sourceAccountId, Guid targetAccountId, Money amount, TransferType type, string description)
+
+
+    public Transfer(Guid sourceAccountId, Guid targetAccountId, decimal amount, TransferType type = default, string description = null, Guid transferId = default, DateTime transferDate = default)
     {
-        TransferId = transferId;
-        TransferDate = transferDate;
         SourceAccountId = sourceAccountId;
         TargetAccountId = targetAccountId;
-        Amount = amount;
         Type = type;
         Description = description;
+        TransferId = transferId;
+        TransferDate = transferDate;
     }
 
     public Guid TransferId { get; private set; }
