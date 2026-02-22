@@ -1,0 +1,6 @@
+@SmallBankingSystem.API_HostAddress = http://localhost:5124
+
+GET {{SmallBankingSystem.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

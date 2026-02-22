@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallBankingSystem.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallBankingSystem.Application", "SmallBankingSystem.Application\SmallBankingSystem.Application.csproj", "{A90130FA-6779-4011-A7FD-58C547B089B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallBankingSystem.API", "SmallBankingSystem.API\SmallBankingSystem.API.csproj", "{7B1E318B-F95C-46BB-9B4F-7BB9FD2311E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A90130FA-6779-4011-A7FD-58C547B089B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A90130FA-6779-4011-A7FD-58C547B089B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A90130FA-6779-4011-A7FD-58C547B089B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1E318B-F95C-46BB-9B4F-7BB9FD2311E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1E318B-F95C-46BB-9B4F-7BB9FD2311E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1E318B-F95C-46BB-9B4F-7BB9FD2311E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1E318B-F95C-46BB-9B4F-7BB9FD2311E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
-using SmallBankingSystem.Domain.Entities;
-using SmallBankingSystem.Domain.VOsInSln;
+using SmallBankingSystem.Domain.Models.Entities;
+using SmallBankingSystem.Domain.Models.VOsInSln;
 using Xunit;
 
 namespace SmallBankingSystem.Tests;

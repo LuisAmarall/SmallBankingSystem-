@@ -1,5 +1,5 @@
 using DomainDesign.Exceptions;
-using SmallBankingSystem.Domain.VOsInSln;
+using SmallBankingSystem.Domain.Models.VOsInSln;
 using Xunit;
 
 namespace SmallBankingSystem.Tests;

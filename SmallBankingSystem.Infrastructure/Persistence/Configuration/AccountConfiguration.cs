@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmallBankingSystem.Domain.Models.Entities;
 
-namespace SmallBankingSystem.Infrastructure.Persistence.DbContexts.Configuration;
+namespace SmallBankingSystem.Infrastructure.Persistence.Configuration;
 
 public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
