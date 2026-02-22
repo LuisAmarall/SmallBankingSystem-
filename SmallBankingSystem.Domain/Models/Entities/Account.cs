@@ -23,6 +23,12 @@ public class Account
         Money = money;
     }
 
+    public Account(Guid guid1, Guid guid2, DateTime utcNow, AccountNumber accountNumber, Money money)
+    {
+        AccountNumber = accountNumber;
+        Money = money;
+    }
+
     public Guid AccountId { get; private set; }
     public Guid CustomerId { get; private set; }
     public DateTime CreatedAt { get; private set; }

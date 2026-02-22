@@ -2,10 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmallBankingSystem.Application.Interfaces;
-using SmallBankingSystem.Infrastructure.Persistence;
 using SmallBankingSystem.Application.Interfaces.Persistence;
 using SmallBankingSystem.Infrastructure.Persistence.DbContexts;
-using SmallBankingSystem.Infrastructure.Persistence.Repositories;
+using SmallBankingSystem.Infrastructure.Repositories;
 
 namespace SmallBankingSystem.Infrastructure.DependencyInjection;
 

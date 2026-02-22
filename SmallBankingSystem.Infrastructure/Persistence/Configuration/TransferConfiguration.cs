@@ -2,7 +2,7 @@
 using SmallBankingSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SmallBankingSystem.Infrastructure.Persistence.DbContexts.Configuration;
+namespace SmallBankingSystem.Infrastructure.Persistence.Configuration;
 
 public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
 {

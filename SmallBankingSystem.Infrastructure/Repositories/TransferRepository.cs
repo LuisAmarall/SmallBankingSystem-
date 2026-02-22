@@ -3,7 +3,7 @@ using SmallBankingSystem.Application.Interfaces.Persistence;
 using SmallBankingSystem.Domain.Models.Entities;
 using SmallBankingSystem.Infrastructure.Persistence.DbContexts;
 
-namespace SmallBankingSystem.Infrastructure.Persistence.Repositories;
+namespace SmallBankingSystem.Infrastructure.Repositories;
 
 public class TransferRepository : ITransferRepository
 {

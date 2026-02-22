@@ -1,7 +1,7 @@
 ﻿using SmallBankingSystem.Application.Interfaces;
 using SmallBankingSystem.Infrastructure.Persistence.DbContexts;
 
-namespace SmallBankingSystem.Infrastructure.Persistence;
+namespace SmallBankingSystem.Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
