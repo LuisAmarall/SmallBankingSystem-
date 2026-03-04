@@ -86,7 +86,7 @@ namespace SmallBankingSystem.Infrastructure.Migrations
 
                     b.HasKey("TransferId");
 
-                    b.ToTable("Transfers", (string)null);
+                    b.ToTable("TransferValidators", (string)null);
                 });
 
             modelBuilder.Entity("SmallBankingSystem.Domain.Models.Entities.Account", b =>
@@ -216,7 +216,7 @@ namespace SmallBankingSystem.Infrastructure.Migrations
 
                             b1.HasKey("TransferId");
 
-                            b1.ToTable("Transfers");
+                            b1.ToTable("TransferValidators");
 
                             b1.WithOwner()
                                 .HasForeignKey("TransferId");

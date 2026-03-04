@@ -1,32 +1,29 @@
-﻿using SmallBankingSystem.Domain.Models.VOsInSln;
+﻿using DomainDesign.Exceptions;
+using SmallBankingSystem.Domain.Models.VOsInSln;
 
 namespace SmallBankingSystem.Domain.Models.Entities;
 
 public class Account
 {
-    private Account() { }
+    private Account() { } 
 
-    public Account(Guid accountId, Guid customerId, DateTime createdAt, AccountNumber accountNumber, Money balance, Money money)
+    private Account(Guid customerId, AccountNumber accountNumber)
     {
-        AccountId = accountId;
+        AccountId = Guid.NewGuid();
         CustomerId = customerId;
-        CreatedAt = createdAt; CreatedAt = createdAt;
+        CreatedAt = DateTime.UtcNow;
         AccountNumber = accountNumber;
-        Balance = balance;
-        Money = money; 
+        Balance = Money.Zero;
     }
 
-    public Account(Guid customerId, AccountNumber accountNumber, Money money)
+    public static Account Create(Guid customerId)
     {
-        CustomerId = customerId;
-        AccountNumber = accountNumber;
-        Money = money;
-    }
+        if (customerId == Guid.Empty)
+            throw new ArgumentException("CustomerId cannot be empty.");
 
-    public Account(Guid guid1, Guid guid2, DateTime utcNow, AccountNumber accountNumber, Money money)
-    {
-        AccountNumber = accountNumber;
-        Money = money;
+        return new Account(
+            customerId,
+            AccountNumber.Generate());
     }
 
     public Guid AccountId { get; private set; }
@@ -35,12 +32,14 @@ public class Account
 
     public AccountNumber AccountNumber { get; private set; }
     public Money Balance { get; private set; }
-    public Money Money { get; }
 
     public void Deposit(Money amount)
     {
         if (amount is null)
-            throw new ArgumentNullException(nameof(amount), "Amount cannot be null.");
+            throw new RequiredFieldException(nameof(amount));
+
+        if (amount.IsNegativeOrZero())
+            throw new InvalidValueObjectException("Deposit amount must be greater than zero.");
 
         Balance = Balance.AddMoney(amount);
     }
@@ -48,19 +47,26 @@ public class Account
     public void Withdraw(Money amount)
     {
         if (amount is null)
-            throw new ArgumentNullException(nameof(amount), "Amount cannot be null.");
+            throw new RequiredFieldException(nameof(amount));
+
+        if (amount.IsNegativeOrZero())
+            throw new InvalidValueObjectException("Withdraw amount must be greater than zero.");
+
+        if (Balance.IsLessThan(amount))
+            throw new InvalidValueObjectException("Insufficient balance.");
 
         Balance = Balance.SubtractMoney(amount);
     }
 
-    public void TransferTo(Account target, Money amount)
+    public void TransferTo(Account targetAccount, Money amount)
     {
-        if (target is null)
-            throw new ArgumentNullException(nameof(target), "Target account cannot be null.");
+        if (targetAccount is null)
+            throw new ArgumentNullException(nameof(targetAccount), "Target account cannot be null.");
+
         if (amount is null)
             throw new ArgumentNullException(nameof(amount), "Amount cannot be null.");
 
         Withdraw(amount);
-        target.Deposit(amount);
+        targetAccount.Deposit(amount);
     }
 }

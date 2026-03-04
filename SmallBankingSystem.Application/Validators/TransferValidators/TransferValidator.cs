@@ -1,17 +1,17 @@
 ﻿using DomainDesign.Exceptions;
-using SmallBankingSystem.Application.Contracts.Transfers;
+using SmallBankingSystem.Application.Contracts.Requests.Transfer;
 
 namespace SmallBankingSystem.Application.Validators.Transfers;
 
 public sealed class TransferValidator
 {
-    public static void Validate(CreateTransferRequest request)
+    public static void Validate(TransferRequest request)
     {
         if (request is null)
             throw new RequiredFieldException($"{nameof(request)}: Please note that the id field does not allow null values.");
 
-        if (request.SourceAccountId == Guid.Empty)
-            throw new RequiredFieldException($"{nameof(request.SourceAccountId)}: Please note that the source account id field does not allow null values.");
+        if (request.OriginAccountId == Guid.Empty)
+            throw new RequiredFieldException($"{nameof(request.OriginAccountId)}: Please note that the source account id field does not allow null values.");
 
         if (request.TargetAccountId == Guid.Empty)
             throw new RequiredFieldException($"{nameof(request.TargetAccountId)}: Please note that the target account id field does not allow null values.");
