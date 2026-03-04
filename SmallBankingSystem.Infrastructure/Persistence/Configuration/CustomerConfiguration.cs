@@ -27,5 +27,10 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         {
             password.Property(b => b.Key).HasColumnName("Password").HasColumnType("VARCHAR").HasMaxLength(10).IsRequired();
         });
+
+        builder.OwnsOne(b => b.Account, account =>
+        {
+            account.HasOne(a => a).WithOne().HasForeignKey<Account>(a => a.CustomerId);
+        });
     }
 }

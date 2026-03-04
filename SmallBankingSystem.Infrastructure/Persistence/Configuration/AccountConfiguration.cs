@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmallBankingSystem.Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace SmallBankingSystem.Infrastructure.Persistence.Configuration;
 

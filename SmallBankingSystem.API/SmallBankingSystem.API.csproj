@@ -7,7 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmallBankingSystem.Application\SmallBankingSystem.Application.csproj" />
+    <ProjectReference Include="..\SmallBankingSystem.Infrastructure\SmallBankingSystem.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ProjectDesign">
+      <HintPath>..\..\ProjectDesign\bin\Debug\ProjectDesign.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

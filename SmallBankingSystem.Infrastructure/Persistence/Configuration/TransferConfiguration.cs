@@ -11,15 +11,17 @@ public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
         builder.ToTable("Transfers");
         builder.HasKey(b => b.TransferId);
 
-        builder.Property(b => b.TransferDate).HasColumnName("TransferDate").HasColumnType("DATETIME").IsRequired();
+        builder.Property(b => b.OriginAccountId).HasColumnName("OriginAccountId").HasColumnType("UNIQUEIDENTIFIER").IsRequired();
+
+        builder.Property(b => b).HasColumnName("TargetAccountId").HasColumnType("UNIQUEIDENTIFIER").IsRequired();
 
         builder.OwnsOne(b => b.Amount, amount =>
         {
             amount.Property(b => b.Amount).HasColumnName("Balance").HasColumnType("DECIMAL(18,2)").IsRequired();
         });
 
-        builder.Property(b => b.Type).HasColumnName("Type").HasColumnType("INT").IsRequired();
+        builder.Property(b => b.CreatedAt).HasColumnName("CreatedAt").HasColumnType("DATETIME").IsRequired();
 
-        builder.Property(b => b.Description).HasColumnName("Description").HasColumnType("VARCHAR").HasMaxLength(200).IsRequired(false);
+        builder.Property(b => b.Status).HasColumnName("Type").HasColumnType("INT").IsRequired();
     }
-}
+} 

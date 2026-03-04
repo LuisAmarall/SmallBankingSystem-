@@ -8,7 +8,9 @@ public interface ITransferRepository
 
     Task<Transfer> GetByIdAsync(Guid id);
 
-    Task<IReadOnlyList<Transfer>> GetBySourceAccountIdAsync(Guid sourceAccountId);
+    Task<IReadOnlyList<Transfer>> GetByOriginAccountIdAsync(Guid originAccountId);
 
     Task<IReadOnlyList<Transfer>> GetByTargetAccountIdAsync(Guid targetAccountId);
+
+    Task SaveChangesAsync();
 }

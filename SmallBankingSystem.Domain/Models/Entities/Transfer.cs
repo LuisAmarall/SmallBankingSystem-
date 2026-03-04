@@ -4,37 +4,59 @@ namespace SmallBankingSystem.Domain.Models.Entities;
 
 public class Transfer
 {
-    public enum TransferType
+    public enum TransferStatus
     {
-        Deposit,
-        Withdraw,
-        TransferIn,
-        TransferOut,
+        Pending = 1,
+        Completed = 2,
+        Failed = 3
     }
 
     private Transfer() { }
 
-
-
-    public Transfer(Guid sourceAccountId, Guid targetAccountId, decimal amount, TransferType type = default, string description = null, Guid transferId = default, DateTime transferDate = default)
+    public Transfer(Guid originAccountId, Guid targetAccountId, Money amount)
     {
-        SourceAccountId = sourceAccountId;
+        if (originAccountId == Guid.Empty)
+            throw new ArgumentException("Origin account cannot be empty.");
+
+        if (targetAccountId == Guid.Empty)
+            throw new ArgumentException("Target account cannot be empty.");
+
+        if (originAccountId == targetAccountId)
+            throw new InvalidOperationException("Cannot transfer to the same account.");
+
+        if (amount is null || amount.IsNegativeOrZero())
+            throw new InvalidOperationException("Transfer amount must be greater than zero.");
+
+        TransferId = Guid.NewGuid();
+        OriginAccountId = originAccountId;
         TargetAccountId = targetAccountId;
-        Type = type;
-        Description = description;
-        TransferId = transferId;
-        TransferDate = transferDate;
+        Amount = amount;
+        CreatedAt = DateTime.UtcNow;
+        Status = TransferStatus.Pending;
     }
 
     public Guid TransferId { get; private set; }
-    public DateTime TransferDate { get; private set; }
-
-    public Guid SourceAccountId { get; private set; }
-
+    public Guid OriginAccountId { get; private set; }
     public Guid TargetAccountId { get; private set; }
 
     public Money Amount { get; private set; }
+    public DateTime CreatedAt { get; private set; }
 
-    public TransferType Type { get; private set; }
-    public string Description { get; set; }
+    public TransferStatus Status { get; private set; }
+
+    public void MarkAsCompleted()
+    {
+        if (Status != TransferStatus.Pending)
+            throw new InvalidOperationException("Transfer cannot be completed.");
+
+        Status = TransferStatus.Completed;
+    }
+
+    public void MarkAsFailed()
+    {
+        if (Status != TransferStatus.Pending)
+            throw new InvalidOperationException("Transfer cannot be marked as failed.");
+
+        Status = TransferStatus.Failed;
+    }
 }

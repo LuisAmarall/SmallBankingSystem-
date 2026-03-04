@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmallBankingSystem.Application.Interfaces.Persistence;
 using SmallBankingSystem.Domain.Models.Entities;
+using SmallBankingSystem.Application.Interfaces.Persistence;
 using SmallBankingSystem.Infrastructure.Persistence.DbContexts;
 
 namespace SmallBankingSystem.Infrastructure.Repositories;
@@ -24,13 +24,18 @@ public class TransferRepository : ITransferRepository
         return await _context.Transfers.FindAsync(id);
     }
 
-    public async Task<IReadOnlyList<Transfer>> GetBySourceAccountIdAsync(Guid sourceAccountId)
+    public async Task<IReadOnlyList<Transfer>> GetByOriginAccountIdAsync(Guid originAccountId)
     {
-        return await _context.Transfers.AsNoTracking().Where(t => t.SourceAccountId == sourceAccountId).ToListAsync();
+        return await _context.Transfers.AsNoTracking().Where(t => t.OriginAccountId == originAccountId).ToListAsync();
     }
 
     public async Task<IReadOnlyList<Transfer>> GetByTargetAccountIdAsync(Guid targetAccountId)
     {
         return await _context.Transfers.AsNoTracking().Where(t => t.TargetAccountId == targetAccountId).ToListAsync();
+    }
+
+    public Task SaveChangesAsync()
+    {
+        return _context.SaveChangesAsync();
     }
 }

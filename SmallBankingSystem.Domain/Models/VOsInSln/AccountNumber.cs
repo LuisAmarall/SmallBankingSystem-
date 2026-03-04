@@ -1,5 +1,7 @@
 ﻿using DomainDesign.Exceptions;
 using DomainDesign.Shared;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SmallBankingSystem.Domain.Models.VOsInSln;
 
@@ -24,6 +26,14 @@ public sealed class AccountNumber : ValueObject<AccountNumber>
             throw new InvalidValueObjectException("Account number must be exactly 16 characters long.");
         if (!number.All(char.IsDigit))
             throw new InvalidValueObjectException("Account number must contain only digits.");
+    }
+
+    public static AccountNumber Generate()
+    {
+        var random = new Random();
+        var number = random.Next(10000000, 99999999).ToString();
+
+        return new AccountNumber(number);
     }
 
     protected override IEnumerable<object> GetEqualityComponents()

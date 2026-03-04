@@ -46,6 +46,19 @@ public sealed class Money : ValueObject<Money>
         return new Money(Amount - other.Amount);
     }
 
+    public bool IsNegativeOrZero()
+    {
+        return Amount <= 0;
+    }
+
+    public bool IsLessThan(Money other)
+    {
+        if (other is null)
+            throw new ArgumentNullException(nameof(other));
+
+        return Amount < other.Amount;
+    }
+
     public override string ToString()
     {
         return Amount.ToString("F2");

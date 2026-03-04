@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SmallBankingSystem.Application.Interfaces;
-using SmallBankingSystem.Application.Interfaces.Persistence;
-using SmallBankingSystem.Infrastructure.Persistence.DbContexts;
 using SmallBankingSystem.Infrastructure.Repositories;
+using SmallBankingSystem.Application.Interfaces.Persistence;
+using SmallBankingSystem.Application.Interfaces.Repositories;
+using SmallBankingSystem.Infrastructure.Persistence.DbContexts;
 
 namespace SmallBankingSystem.Infrastructure.DependencyInjection;
 
@@ -24,9 +24,8 @@ public static class InfrastructureServiceCollection
     }
 
     private static void RegisterRepositories(IServiceCollection services)
-    {
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IAccountRepository, AccountRepository>();
+    { 
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<ITransferRepository, TransferRepository>();
     }
 }
