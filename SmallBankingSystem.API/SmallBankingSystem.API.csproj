@@ -16,6 +16,10 @@
     <ProjectReference Include="..\SmallBankingSystem.Infrastructure\SmallBankingSystem.Infrastructure.csproj" />
   </ItemGroup>
 
+    <PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
   <ItemGroup>
     <Reference Include="ProjectDesign">
       <HintPath>..\..\ProjectDesign\bin\Debug\ProjectDesign.dll</HintPath>

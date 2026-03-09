@@ -6,4 +6,6 @@ namespace SmallBankingSystem.Application.Interfaces.Services;
 public interface ITransferService
 {
     Task<TransferResponse> CreateAsync(TransferRequest request);
+
+    Task<TransferResponse?> GetByIdAsync(Guid transferId);
 }

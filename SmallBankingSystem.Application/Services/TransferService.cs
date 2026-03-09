@@ -8,6 +8,7 @@ using SmallBankingSystem.Application.Interfaces.Repositories;
 using SmallBankingSystem.Application.Mappings.TransferMappings;
 using SmallBankingSystem.Application.Contracts.Requests.Transfer;
 using SmallBankingSystem.Application.Contracts.Responses.Transfer;
+using SmallBankingSystem.Application.Mappings.CustomerMappings;
 
 namespace SmallBankingSystem.Application.Services;
 
@@ -51,6 +52,15 @@ public sealed class TransferService : ITransferService
         await _transferRepository.AddAsync(transfer);
 
         await _customerRepository.SaveChangesAsync();
+
+        return TransferMappings.ToResponse(transfer);
+    }
+
+    public async Task<TransferResponse?> GetByIdAsync(Guid transferId)
+    {
+        var transfer = await _transferRepository.GetByIdAsync(transferId);
+
+        if (transfer is null) return null;
 
         return TransferMappings.ToResponse(transfer);
     }
