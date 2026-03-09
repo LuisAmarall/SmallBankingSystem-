@@ -330,5 +330,7 @@ https://localhost:{port}/swagger
 ---
 
 # Author
+Luis Amaral
+https://www.linkedin.com/in/luisamarall/
 
 Backend architecture study project built with **ASP.NET Core**.
